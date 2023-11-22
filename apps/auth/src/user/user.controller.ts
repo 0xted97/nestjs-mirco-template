@@ -13,7 +13,7 @@ export class UserController {
 
   @MessagePattern('auth.login')
   async login(@Payload() body: LoginDto) {
-    console.log("🚀 ~ file: user.controller.ts:13 ~ UserController ~ login ~ body:", body)
+    console.log("🚀 ~ file: user.controller.ts:16 ~ UserController ~ login ~ body:", body)
     return body;
   }
 

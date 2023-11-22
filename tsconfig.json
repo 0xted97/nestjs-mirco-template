@@ -26,6 +26,9 @@
       ],
       "@app/common": [
         "libs/common"
+      ],
+      "@app/*": [
+        "libs/*"
       ]
     }
   }

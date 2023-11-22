@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-gateway-deploy-testing
+  namespace: testing
+spec:
+  replicas: 1
+  strategy: 
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: user-gateway-testing
+  template:
+    metadata:
+      labels:
+        app: user-gateway-testing
+    spec:
+      containers:
+        - image: nvkhiem2016/user-gateway-service
+          name: user-gateway-testing
+          envFrom:
+            - configMapRef: 
+                name: env-testing
+            # - secretRef:
+            #     name: secret-testing
+          ports:
+            - containerPort: 8080
+          # imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-gateway-testing-service
+  namespace: testing
+spec:
+  type: LoadBalancer
+  selector: 
+    app: user-gateway-testing
+  ports:
+    - port: 8080
+      targetPort: 8080
