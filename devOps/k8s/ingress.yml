@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: user-gateway-testing-ingress
+  namespace: testing
+spec:
+  ingressClassName: user-gateway-testing
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: user-gateway-testing-service
+            port:
+              number: 8080  # Port on which your service is running
