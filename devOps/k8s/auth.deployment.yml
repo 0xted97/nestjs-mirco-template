@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deploy-testing
+  namespace: testing
+spec:
+  replicas: 1
+  strategy: 
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: auth-testing
+  template:
+    metadata:
+      labels:
+        app: auth-testing
+    spec:
+      containers:
+        - image: nvkhiem2016/auth-service
+          name: auth-testing
+          envFrom:
+            - configMapRef: 
+                name: env-testing
+            # - secretRef:
+            #     name: secret-testing
+          ports:
+            - containerPort: 1500
+          # imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-testing-service
+  namespace: testing
+spec:
+  type: LoadBalancer
+  selector: 
+    app: auth-testing
+  ports:
+    - port: 1500
+      targetPort: 1500

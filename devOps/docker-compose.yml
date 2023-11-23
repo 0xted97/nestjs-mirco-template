@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  user-gateway:
+    build: 
+      context: ./docker/user-gateway.dockerfile
+    container_name: user-gateway
+    ports:
+      - 8080:8080
+    env_file:
+      - ./.env
+    volumes:
+      - ./jwt.key:/app/jwt.key
+    restart: always
+
+volumes:
+  user-gateway:

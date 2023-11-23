@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-testing
+  namespace: testing
+data:
+  MONGO_URI: "mongodb+srv://im-dev:im-dev@im-dev.mvnrzk0.mongodb.net/monorepo"
+
+  AWS_ACCESS_KEY: "AKIA2TNM2E2G4XH753FM"
+  AWS_ACCESS_SECRET: "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"
+  AWS_S3_BUCKET: "identifyme"
+  AWS_S3_REGION: "ap-southeast-1"
+
+  # User Gateway
+  KAFKA_HOST: "broker:9092"
+
+  # User Gateway
+  USER_GATEWAY_PORT: "8080"
+  USER_GATEWAY_HOST: "127.0.0.1"
+
+  # Auth
+  AUTH_PORT: "1500"
+  AUTH_HOST: "127.0.0.1"
