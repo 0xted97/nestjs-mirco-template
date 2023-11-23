@@ -4,7 +4,7 @@ metadata:
   name: auth-deploy-testing
   namespace: testing
 spec:
-  replicas: 1
+  replicas: 2
   strategy: 
     type: RollingUpdate
   selector:
